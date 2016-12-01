@@ -1,0 +1,17 @@
+body{
+  padding: 0;
+}
+
+h1{
+  font-size: 50px;
+}
+
+header{
+  text-align: center;
+  width: 100%;
+  background-color: red;
+}
+
+p{
+  font-size: 20px;
+}
