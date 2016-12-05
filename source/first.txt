@@ -1,5 +1,0 @@
-<h2>Nando Peter</h2>
-    <p class="message">Hallo Ich bin der Nando Peter und komme aus düsseldorf.</p>
-<br>
-    <h2>Anikin Skywalker</h2>
-    <p class="message">Hallo ich komme aus der Zukuft und finde deine Website toll ;)</p>

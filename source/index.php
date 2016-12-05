@@ -2,7 +2,7 @@
 <html>
   <head>
       <meta charset="utf-8">
-      <title>Gästebuch</title>
+      <title>Ultra Guestbook</title>
       <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -10,17 +10,22 @@
       <h1>Ultra Guestbook</h1>
     </header>
 
-    <h3>Name :
-      <input type="text" id="name" value="">
-    </h3>
+    <form method="post" action="function.php">
 
-    <textarea name="name" rows="8" cols="40"></textarea>
+      <?php /* var_dump($_POST) */ ?>
 
-    <button type="button">send</button>
+      <h3>Name :
+        <input type="text" id="name" name="name" value="">
+      </h3>
 
-    <?php
-    $inhalt = file_get_contents('C:\xampp\htdocs\Projekte\guestbook\source\first.txt');
-    echo $inhalt;
+      <textarea name="note" id="note" rows="8" cols="40"></textarea>
+
+      <p class="action">
+        <input type="submit" value="Eintrag abschicken">
+      </p>
+    </form>
+    <?php include ("function.php");
+        echo $guestbookEntries;
     ?>
   </body>
 </html>
