@@ -14,12 +14,6 @@
 
       <?php /* var_dump($_POST) */ ?>
 
-      <?php foreach ($errors as $value): ?>
-
-            <li><?php echo $value ?></li>
-
-          <?php endforeach;      ?>
-
       <h3>Name :
         <input type="text" id="name" name="name" value="">
       </h3>
@@ -30,8 +24,12 @@
         <input type="submit" value="Eintrag abschicken">
       </p>
     </form>
-    <?php include ("function.php");
+
+  <?php include ("function.php");
         echo $guestbookEntries;
     ?>
+  <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  header ("Location: index.php");
+} ?>
   </body>
 </html>
