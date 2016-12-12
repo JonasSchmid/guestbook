@@ -13,25 +13,35 @@ $guestbookEntries = file_get_contents($database);
 
  if($_SERVER['REQUEST_METHOD'] === 'POST')
   {
-
+    $errors = [];
     // prüfen ob variable vorhanden sonst''
     $name = strip_tags ($_POST['name']) ?? '';
+    // prüfen ob <> eingegeben wurden
     $name = htmlentities ($name);
     $message = strip_tags ($_POST['note']) ?? '';
     $message = htmlentities ($message);
     $newEntry = "<h2>" .$name ."</h2>" .$message ."<br>";
     echo $newEntry;
 
+    if ($name === '') {
+      $errors[] = 'Bitte gib einen Namen ein.';
+    }
+    if ($message === '') {
+      $errors[] = 'Bitte geben sie eine Nachricht ein';
+    }
+
     $guestbookEntries .= $newEntry;
 
-    $handle = fopen ('database.txt', 'w');
+    if (count($errors) === 0) {
+    //daten($guestbookEntries) in Datenbank speichern
+    $handle = fopen ('database.txt', 'w');    //'w' steht für write
+    //fwrite fügt dem file etwas hinzu.
     fwrite ($handle, $guestbookEntries);
-    fclose($handle);
+    fclose ($handle);
+  }
 
-    // todo $guestbookEntries in die Datenbank speichern.
-
-
-    header("Location: index.php");
+    // index.php wird aufgerufen
+    header ("Location: index.php");
   }
   else
     {
