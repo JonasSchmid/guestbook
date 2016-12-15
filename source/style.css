@@ -36,3 +36,7 @@ header{
 button{
   font-size: 30px;
 }
+
+.error{
+  background-color: red;
+}

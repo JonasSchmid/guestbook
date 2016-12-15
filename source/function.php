@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
 
 <?php
 
@@ -33,6 +25,9 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
       $name = strip_tags ($_POST['name']) ?? '';
       // prüfen ob <> eingegeben wurden
       $name = htmlentities ($name);
+      // löscht alle leerschläge
+      $name = str_replace(" ", "", $name);
+
       $message = strip_tags ($_POST['note']) ?? '';
       $message = htmlentities ($message);
       $newEntry = "<h4>Dieser Beitrag wurde erstellt von " .'"' .$name .'"' ." am " .$date ."</h4>" .$message ."<br>";
@@ -53,20 +48,17 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
         fwrite ($handle, $guestbookEntries);
         fclose ($handle);
 
-        header ("Location: index.php");
 
       }
 
       if (count($errors > 0)) {
         echo ("<br>");
         foreach ($errors as $value)
-        echo ("<ul><li>$value</li></ul>");
+        echo ("<ul><li class = 'error'>$value</li></ul>");
       }
 
       // index.php wird aufgerufen dann nicht mehr POST
-      //header ("Location: index.php");?>
-      <button type="button" onClick="location.href='index.php'">Zurück</button>
-      <?php
+      //header ("Location: index.php");
   }
 
 
@@ -79,8 +71,3 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
           $guestbookEntries = "Verfassen Sie den ersten Eintrag.";
        }
     }
-?>
-
-
-  </body>
-</html>

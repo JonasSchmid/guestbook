@@ -10,7 +10,9 @@
       <h1>Ultra Guestbook</h1>
     </header>
 
-    <form method="post" action="function.php">
+    <?php  include ("function.php"); ?>
+
+    <form method="post" action="index.php">
 
 
       <?php /* var_dump($_POST) */ ?>
@@ -26,7 +28,7 @@
       </p>
     </form>
 
-  <?php include ("function.php");
+  <?php
         echo $guestbookEntries;
     ?>
   </body>
