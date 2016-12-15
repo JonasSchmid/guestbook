@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
 <?php
 
 $database = 'database.txt';
@@ -22,12 +31,11 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
   {
       // prüfen ob variable vorhanden sonst''
       $name = strip_tags ($_POST['name']) ?? '';
-      $name = '"' .$name .'"';
       // prüfen ob <> eingegeben wurden
       $name = htmlentities ($name);
       $message = strip_tags ($_POST['note']) ?? '';
       $message = htmlentities ($message);
-      $newEntry = "<h3>Dieser Beitrag wurde erstellt von " .$name ." am " .$date ."</h3>" .$message ."<br>";
+      $newEntry = "<h4>Dieser Beitrag wurde erstellt von " .'"' .$name .'"' ." am " .$date ."</h4>" .$message ."<br>";
 
       if ($name === '') {
         $errors[] = 'Bitte geben sie einen Namen ein.';
@@ -56,7 +64,9 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
       }
 
       // index.php wird aufgerufen dann nicht mehr POST
-      //header ("Location: index.php");
+      //header ("Location: index.php");?>
+      <button type="button" onClick="location.href='index.php'">Zurück</button>
+      <?php
   }
 
 
@@ -69,3 +79,8 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
           $guestbookEntries = "Verfassen Sie den ersten Eintrag.";
        }
     }
+?>
+
+
+  </body>
+</html>
