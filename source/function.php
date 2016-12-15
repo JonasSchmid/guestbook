@@ -37,7 +37,10 @@ $errors = [];
         $handle = fopen ('database.txt', 'w');    //'w' steht für write
         //fwrite fügt dem file etwas hinzu.
         fwrite ($handle, $guestbookEntries);
-      fclose ($handle);
+        fclose ($handle);
+
+        header ("Location: index.php");
+
       }
 
       if (count($errors > 0)) {
@@ -45,9 +48,12 @@ $errors = [];
         echo ("<ul><li>$value</li></ul>");
       }
 
+
+
       // index.php wird aufgerufen dann nicht mehr POST
       //header ("Location: index.php");
   }
+
 
   else
     {

@@ -12,6 +12,7 @@
 
     <form method="post" action="function.php">
 
+
       <?php /* var_dump($_POST) */ ?>
 
       <h3>Name :
@@ -28,8 +29,5 @@
   <?php include ("function.php");
         echo $guestbookEntries;
     ?>
-  <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  header ("Location: index.php");
-} ?>
   </body>
 </html>
