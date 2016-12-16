@@ -1,6 +1,5 @@
 
 <?php
-
 $database = 'database.txt';
 
 // prüft ob file vorhanden wenn nicht wird erstellt.
@@ -39,9 +38,8 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
         $errors[] = 'Bitte geben sie eine Nachricht ein';
       }
 
-      $guestbookEntries = $newEntry. $guestbookEntries;
-
       if (count($errors) === 0) {
+        $guestbookEntries = $newEntry. $guestbookEntries;
         //daten($guestbookEntries) in Datenbank speichern
         $handle = fopen ('database.txt', 'w');    //'w' steht für write
         //fwrite fügt dem file etwas hinzu.
@@ -53,8 +51,10 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
 
       if (count($errors > 0)) {
         echo ("<br>");
-        foreach ($errors as $value)
-        echo ("<ul><li class = 'error'>$value</li></ul>");
+        echo ("<ul class = 'error'>");
+        foreach ($errors as $value) {
+        echo ("<li>$value</li>");}
+        echo ("</ul>");
       }
 
       // index.php wird aufgerufen dann nicht mehr POST
