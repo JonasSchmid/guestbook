@@ -20,6 +20,10 @@
       <h3>Name :
         <input type="text" id="name" name="name" value="">
       </h3>
+      <h3>E-Mail :
+        <input type="email" id="email" name="email" value="">
+      </h3>
+
 
       <textarea name="note" id="note" rows="8" cols="40"></textarea>
 

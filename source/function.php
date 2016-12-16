@@ -29,13 +29,21 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
 
       $message = strip_tags ($_POST['note']) ?? '';
       $message = htmlentities ($message);
-      $newEntry = "<h4>Dieser Beitrag wurde erstellt von " .'"' .$name .'"' ." am " .$date ."</h4>" .$message ."<br>";
+
+      $email = strip_tags ($_POST['email']) ?? '';
+      $email = htmlentities ($email);
+      $email = "<a href='mailto:$email'>$email</a>";
+
+      $newEntry = "<h4>Dieser Beitrag wurde erstellt von " .'"' .$name .'"' .'(' .$email .')' ." am " .$date ."</h4>" .$message ."<br>";
 
       if ($name === '') {
         $errors[] = 'Bitte geben sie einen Namen ein.';
       }
       if ($message === '') {
         $errors[] = 'Bitte geben sie eine Nachricht ein';
+      }
+      if ($email === '') {
+        $errors[] = 'Bitte geben sie eine E-Mail ein';
       }
 
       if (count($errors) === 0) {
