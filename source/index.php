@@ -34,6 +34,9 @@
 
   <?php
         echo $guestbookEntries;
+        include ("delete.php");
     ?>
+
+
   </body>
 </html>

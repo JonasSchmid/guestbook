@@ -10,6 +10,18 @@ if (!file_exists($database))
 
 
 $guestbookEntries = file_get_contents($database);
+
+$arrayEntries = explode("\r\n", $guestbookEntries);
+$arrayEntries[0] . "<br />".  $arrayEntries[1] . "<br />".  $arrayEntries[2] . "<  />";
+
+
+$pos = strpos($guestbookEntries, ";");
+echo $pos;
+for ($i=0; $i < $pos ; $i++) {
+}
+
+
+
 $errors = [];
 
 //bestimmt das datum
@@ -32,9 +44,6 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
 
       $email = strip_tags ($_POST['email']) ?? '';
       $email = htmlentities ($email);
-      $email = "<a href='mailto:$email'>$email</a>";
-
-      $newEntry = "<h4>Dieser Beitrag wurde erstellt von " .'"' .$name .'"' .'(' .$email .')' ." am " .$date ."</h4>" .$message ."<br>";
 
       if ($name === '') {
         $errors[] = 'Bitte geben sie einen Namen ein.';
@@ -47,7 +56,12 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
       }
 
       if (count($errors) === 0) {
-        $guestbookEntries = $newEntry. $guestbookEntries;
+
+      $email = "<a href='mailto:$email'>$email</a>";
+      $newEntry = ";<h4> Dieser Beitrag wurde erstellt von " .'"' .$name .'"' .'(' .$email .')' ." am " .$date ."</h4>" .$message ."<br>" . "\r\n";
+
+
+        $guestbookEntries = $newEntry . $guestbookEntries;
         //daten($guestbookEntries) in Datenbank speichern
         $handle = fopen ('database.txt', 'w');    //'w' steht für write
         //fwrite fügt dem file etwas hinzu.
