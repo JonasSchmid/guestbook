@@ -1,16 +1,25 @@
 <?php
 session_start();
-$user = $_POST['user'];
 
-if (!isset($user) OR empty($user)) {
-  $user = "Gast";
+$_logindaten = ARRAY("name"=>"admin", "passwort"=>"12345");
+# $_SESSION["login"] = 0;
+if (isset($_POST["user"]) && isset($_POST["password"]))
+{
+  if($_logindaten["name"] == $_POST["user"] &&
+     $_logindaten["passwort"] == $_POST["password"])
+     {
+       echo "du bist nun angemeldet";
+       $_SESSION["login"] = 1;
+     }
 }
 
-$_SESSION['username'] = $user;
+if ($_SESSION["login"] != 1)
+{
+  echo "anmeldung fehlgeschlagen";
 
-echo "Hallo $user <br />
-<a href=\"seite2.php\">Seite 2</a><br />
-<a href=\"logout.php\">Logout</a>";
+  include("login.html");
+  exit;
+}
 /*$user = strip_tags($_POST['user']);
 $password = strip_tags($_POST['password']);
 
