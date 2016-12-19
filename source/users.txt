@@ -1,2 +1,0 @@
-pete|petepass|pete@somesite.com|Pete Enterprizes
-john|johnpass|john@somedomain.com|John Corporation
