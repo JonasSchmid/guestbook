@@ -1,5 +1,7 @@
 
 <?php
+session_start();
+
 $database = 'database.txt';
 
 // prüft ob file vorhanden wenn nicht wird erstellt.
@@ -15,12 +17,12 @@ $arrayEntries = explode("\r\n", $guestbookEntries);
 $arrayEntries[0] . "<br />".  $arrayEntries[1] . "<br />".  $arrayEntries[2] . "<  />";
 
 
-$pos = strpos($guestbookEntries, ";");
-echo $pos;
-for ($i=0; $i < $pos ; $i++) {
-}
-
-
+#$pos = strpos($guestbookEntries, "¦");
+#echo $pos;
+$file = implode("$@", file('database.txt'));
+$bereich = explode("$@", $file);
+$zahl = 0;
+$lB = $bereich ["$zahl"]; //Gibt den 2ten Bereich aus
 
 $errors = [];
 
@@ -55,10 +57,13 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
         $errors[] = 'Bitte geben sie eine E-Mail ein';
       }
 
+      $abc = $_SESSION["gaga"];
+
       if (count($errors) === 0) {
 
+      $nB = $lB + 1;
       $email = "<a href='mailto:$email'>$email</a>";
-      $newEntry = ";<h4> Dieser Beitrag wurde erstellt von " .'"' .$name .'"' .'(' .$email .')' ." am " .$date ."</h4>" .$message ."<br>" . "\r\n";
+      $newEntry = $nB ."<h4> Dieser Beitrag wurde erstellt von " .'"' .$name .'"' .'(' .$email .')' ." am " .$date ."</h4>" .$message ."<br>" . "\r\n";
 
 
         $guestbookEntries = $newEntry . $guestbookEntries;
