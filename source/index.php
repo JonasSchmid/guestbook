@@ -33,8 +33,12 @@
     </form>
 
   <?php
-        echo $guestbookEntries;
-        include ("delete.php");
+
+    foreach ($guestBookEntries as $key => $value) {
+        echo $value;
+    }
+
+    include ("delete.php");
     ?>
 
 

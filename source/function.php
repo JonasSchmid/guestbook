@@ -10,19 +10,32 @@ if (!file_exists($database))
     fopen('database.txt', 'x');
 }
 
+$guestBookEntries = getEntriesFromDatabase($database);
 
-$guestbookEntries = file_get_contents($database);
+/*
+foreach ($guestBookEntries as $key => $value) {
+  echo "Key: " . $key . " | Value: " . $value . "<br />";
+}
+*/
+// das Array $arrayEntries hat nun soviele Elemente, wie die Datenbank Zeilen hat, d.h. pro Element eine Zeile = ein GB-Eintrag
 
-$arrayEntries = explode("\r\n", $guestbookEntries);
-$arrayEntries[0] . "<br />".  $arrayEntries[1] . "<br />".  $arrayEntries[2] . "<  />";
+// die Struktur eines GB-Eintrags ist wie folgt:
+// ID|¦|Inhalt
+// das heisst, wir brauchen nochmals ein Array, siehe Excel!
+
+
+
+
+
+
 
 
 #$pos = strpos($guestbookEntries, "¦");
 #echo $pos;
-$file = implode("$@", file('database.txt'));
-$bereich = explode("$@", $file);
-$zahl = 0;
-$lB = $bereich ["$zahl"]; //Gibt den 2ten Bereich aus
+#$file = implode("$@", file('database.txt'));
+#$bereich = explode("$@", $file);
+#$zahl = 0;
+#$lB = $bereich ["$zahl"]; //Gibt den 2ten Bereich aus
 
 $errors = [];
 
@@ -65,16 +78,24 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
       $email = "<a href='mailto:$email'>$email</a>";
       $newEntry = $nB ."<h4> Dieser Beitrag wurde erstellt von " .'"' .$name .'"' .'(' .$email .')' ." am " .$date ."</h4>" .$message ."<br>" . "\r\n";
 
+      // todo: neue ID bestimmen
+      $newID = $max;
 
-        $guestbookEntries = $newEntry . $guestbookEntries;
-        //daten($guestbookEntries) in Datenbank speichern
-        $handle = fopen ('database.txt', 'w');    //'w' steht für write
-        //fwrite fügt dem file etwas hinzu.
-        fwrite ($handle, $guestbookEntries);
-        fclose ($handle);
+      $guestBookEntries[$newID] = $newEntry;
+      //daten($guestbookEntries) in Datenbank speichern
 
+      $handle = fopen ('database.txt', 'w');    //'w' steht für write
 
+      //fwrite fügt dem file etwas hinzu.
+      $dbContent = "";
+
+      foreach ($guestBookEntries as $key => $value) {
+        $dbContent .= $key . "|||" . $value;
       }
+
+      fwrite ($handle, $dbContent);
+      fclose ($handle);
+    }
 
       if (count($errors > 0)) {
         echo ("<br>");
@@ -87,14 +108,48 @@ $date = $datum ." - " .$uhrzeit ." Uhr";
       // index.php wird aufgerufen dann nicht mehr POST
       //header ("Location: index.php");
   }
-
+#--------->getMaxIDFromArray($assArray);
 
   else
     {
       $errors = '';
       //ist schon ein Eintrag vorhanden?
-      if($guestbookEntries === '' )
+      if($guestBookEntries === null )
        {
-          $guestbookEntries = "Verfassen Sie den ersten Eintrag.";
+          $guestBookEntries = "Verfassen Sie den ersten Eintrag.";
        }
     }
+
+
+function getMaxIDFromArray(){
+
+  $max = 0;
+
+  foreach ($a as $key => $value){
+      if ($key > $max){
+
+          $max = $key;
+      }
+  }
+
+    return $max;
+}
+
+
+function getEntriesFromDatabase($database) {
+    $dbContent = file_get_contents($database);
+    $arrayEntries = explode("\r\n", $dbContent);
+    $anzahl = count($arrayEntries);
+
+    for ($i=0; $i < $anzahl ; $i++) {
+      if ($arrayEntries[$i] != "") {
+        $b = explode("|||", $arrayEntries[$i]);
+        $assArray[$b[0]] = $b[1];
+      }
+
+      return $assArray;
+  }
+
+
+
+}
