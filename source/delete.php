@@ -1,10 +1,18 @@
 <?php
-#if (isset($_SESSION["login"]))
-#{
 
-  #  if ($_SESSION["login"] === 1)
-  #  {
-      $_SESSION["gaga"] = '<button type="button" name="delete">Delete</button>';
-  #  }
+//echo "Ihr Eintrag wurde erfolgreich gelöscht";
+include ("function.php");
 
-#}
+getEntriesFromDatabase('database.txt');
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    echo 'zu löschende ID ist: ' . $_POST['ID'];
+
+      foreach ($guestBookEntries as $key => $value) {
+          if ($key === $_POST['ID']) {
+              unset($guestBookEntries[$key]);
+          }
+
+      }
+  }

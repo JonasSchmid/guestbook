@@ -33,14 +33,23 @@
     </form>
 
   <?php
-
-    foreach ($guestBookEntries as $key => $value) {
-        echo $value;
+    if ($guestBookEntries === "") {
+        echo 'Verfassen Sie den ersten Beitrag.';
     }
+    else {
+        foreach ($guestBookEntries as $key => $value) {
+            echo $value;
 
-    include ("delete.php");
+            if($_SESSION["login"] === 1) {
     ?>
-
-
+              <form action="delete.php" method="post" />
+              <input type="submit" name="btn" value="delete" />
+              <input type="hidden" name="ID" value="<?php echo $key ?>" />
+              </form>
+    <?php
+            }
+        }
+      }
+      ?>
   </body>
 </html>
