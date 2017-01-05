@@ -3,7 +3,7 @@
   <head>
       <meta charset="utf-8">
       <title>Ultra Guestbook</title>
-      <link rel="stylesheet" href="style.css" />
+      <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <header>
@@ -13,12 +13,12 @@
     <form method="post" action="index.php?action=add">
 
 
-      <?php $database = 'database.txt';
+      <?php /*$database = 'database.txt';
             if (!file_exists($database))
             {
                 fopen('database.txt', 'x');
             }
-            /* var_dump($_POST) */ session_start();?>
+            // var_dump($_POST) session_start();*/?>
 
       <h3>Name :
         <input type="text" id="name" name="name" value="">
@@ -46,10 +46,11 @@
 
             if($_SESSION["login"] === 1) {
     ?>
-              <form action="delete.php" method="post" />
+              <form action="index.php?action=delete" method="post" />
               <input type="submit" name="btn" value="delete" />
               <input type="hidden" name="ID" value="<?php echo $key ?>" />
               </form>
+
     <?php
             }
         }

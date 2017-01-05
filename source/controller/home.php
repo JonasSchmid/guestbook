@@ -1,4 +1,11 @@
-<?php 
+<?php
+
+$database = 'database.txt';
+      if (!file_exists($database))
+      {
+          fopen('database.txt', 'x');
+      }
+      session_start();
 
 $guestBookEntries = getEntriesFromDatabase('./database.txt');
 
@@ -16,7 +23,7 @@ function getEntriesFromDatabase($database) {
 
     for ($i=0; $i < $anzahl ; $i++) {
         if ($arrayEntries[$i] != "") {
-          
+
             $b = explode("|||", $arrayEntries[$i]);
             $assArray[$b[0]] = $b[1];
         }
