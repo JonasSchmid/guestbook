@@ -10,6 +10,8 @@ include 'errors.php';
 		
 		
     if (count($errors) === 0) {
+		
+		$email = "<a href='mailto:$email'>$email</a>";
 
         $newEntry = "<h4> Dieser Beitrag wurde erstellt von " .'"' .$name .'"' .'(' .$email .')' ." am " . $date ."</h4>" .$message ."<br>";
 

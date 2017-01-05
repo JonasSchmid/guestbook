@@ -50,7 +50,7 @@ $guestBookEntries = getEntriesFromDatabase($database);
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-function getMaxIDFromArray($guestBookEntries){
+/*function getMaxIDFromArray($guestBookEntries){
 
   if ($guestBookEntries === "") {
     return 0;
@@ -68,7 +68,7 @@ function getMaxIDFromArray($guestBookEntries){
 
     return $max;
 }
-
+*/
 
 /*
 function getEntriesFromDatabase($database) {

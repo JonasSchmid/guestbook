@@ -13,7 +13,12 @@
     <form method="post" action="index.php?action=add">
 
 
-      <?php /* var_dump($_POST) */ ?>
+      <?php $database = 'database.txt';
+            if (!file_exists($database))
+            {
+                fopen('database.txt', 'x');
+            }
+            /* var_dump($_POST) */ session_start();?>
 
       <h3>Name :
         <input type="text" id="name" name="name" value="">
@@ -31,7 +36,7 @@
     </form>
 
   <?php
-	  
+
     if ($guestBookEntries === "") {
         echo 'Verfassen Sie den ersten Beitrag.';
     }
