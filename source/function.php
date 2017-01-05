@@ -26,12 +26,12 @@ $guestBookEntries = getEntriesFromDatabase($database);
 
 
 
-$errors = [];
+//  $errors = [];
 
 
  if($_SERVER['REQUEST_METHOD'] === 'POST')
   {
-      // index.php wird aufgerufen dann nicht mehr POST
+      //wenn headerlocation: index.php wird aufgerufen dann nicht mehr POST
       //header ("Location: index.php");
       saveNewEntry($guestBookEntries, $errors);
   }
@@ -96,7 +96,7 @@ function getEntriesFromDatabase($database) {
 */
 
 
-function makeErrors($errors) {
+/*function makeErrors($errors) {
 
   if (count($errors > 0)) {
     echo ("<br>");
@@ -106,7 +106,8 @@ function makeErrors($errors) {
     echo ("</ul>");
   }
   }
-
+*/
+/*
   function saveNewEntry($guestBookEntries, $errors) {
 
     $timestamp = time();
@@ -116,8 +117,10 @@ function makeErrors($errors) {
 
     // prüfen ob variable vorhanden sonst''
     $name = strip_tags ($_POST['name']) ?? '';
+
     // prüfen ob <> eingegeben wurden
     $name = htmlentities ($name);
+
     // löscht alle leerschläge
     $name = str_replace(" ", "", $name);
 
@@ -169,3 +172,4 @@ function makeErrors($errors) {
 
 
 }
+*/
