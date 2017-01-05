@@ -1,5 +1,7 @@
 <?php 
 
+$guestBookEntries = getEntriesFromDatabase('./database.txt');
+
 function getEntriesFromDatabase($database) {
     $dbContent = file_get_contents($database);
 

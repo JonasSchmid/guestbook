@@ -10,7 +10,7 @@
       <h1>Ultra Guestbook</h1>
     </header>
 
-    <form method="post" action="index.php">
+    <form method="post" action="index.php?action=add">
 
 
       <?php /* var_dump($_POST) */ ?>
@@ -31,8 +31,7 @@
     </form>
 
   <?php
-	$guestBookEntries = getEntriesFromDatabase('./database.txt');
-  
+	  
     if ($guestBookEntries === "") {
         echo 'Verfassen Sie den ersten Beitrag.';
     }

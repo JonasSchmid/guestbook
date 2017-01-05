@@ -1,16 +1,15 @@
 <?php
 
-  if($_SERVER['REQUEST_METHOD'] === 'POST')
-  {
-    // prüfen, welche Aktion verlangt wird -> neuer Eintrag? Löschen eines Eintrages? irgendwas sonst: was?
-    $action = 'new';
-    if ($action = 'new')
-    {
-        include ("addNew.php");
-    }
+  // Falls die `url` keine erlaubte ist,
+  // die 404-Fehler-Seite anzeigen
+  $view = $_GET['action'] ?? 'home';
 
-
+  // Controller für die aktuelle View einbinden,
+  // falls einer existiert.
+  $controllerPath = __DIR__ . "/controller/${view}.php";
+  if (file_exists($controllerPath)) {
+      include $controllerPath;
   }
 
-  include 'controller/guestbook.php';
-  include 'views/guestbook.php';
+  // view anzeigen
+  include "views/${view}.php";
