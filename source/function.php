@@ -70,7 +70,7 @@ function getMaxIDFromArray($guestBookEntries){
 }
 
 
-
+/*
 function getEntriesFromDatabase($database) {
     $dbContent = file_get_contents($database);
 
@@ -85,7 +85,7 @@ function getEntriesFromDatabase($database) {
 
     for ($i=0; $i < $anzahl ; $i++) {
         if ($arrayEntries[$i] != "") {
-          
+
             $b = explode("|||", $arrayEntries[$i]);
             $assArray[$b[0]] = $b[1];
         }
@@ -93,7 +93,7 @@ function getEntriesFromDatabase($database) {
 
     return $assArray;
 }
-
+*/
 
 
 function makeErrors($errors) {
