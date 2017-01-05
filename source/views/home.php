@@ -6,9 +6,24 @@
       <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+
     <header>
       <h1>Ultra Guestbook</h1>
     </header>
+
+
+        <?php
+        if (isset($errors)){
+
+            if (count($errors > 0)) {
+    			echo ("<br>");
+    			echo ("<ul class = 'error'>");
+    			foreach ($errors as $value) {
+    			echo ("<li>$value</li>");}
+    			echo ("</ul>");
+    		    }
+        }
+        ?>
 
     <form method="post" action="index.php?action=add">
 

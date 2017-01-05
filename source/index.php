@@ -1,5 +1,7 @@
 <?php
 
+  include "shared/dbAccess.php";
+
   // Falls die `url` keine erlaubte ist,
   // die 404-Fehler-Seite anzeigen
   $view = $_GET['action'] ?? 'home';
@@ -12,4 +14,9 @@
   }
 
   // view anzeigen
-  include "views/${view}.php";
+  if ($view === 'add') {
+    include "views/home.php";
+  }
+  else {
+    include "views/${view}.php";
+  }

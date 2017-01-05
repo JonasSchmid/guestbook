@@ -21,7 +21,7 @@ $_logindaten = ARRAY("name"=>"admin", "passwort"=>"12345");
       include("login.html");
       exit;
     }
-    
+
 /*$user = strip_tags($_POST['user']);
 $password = strip_tags($_POST['password']);
 

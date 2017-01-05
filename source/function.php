@@ -9,11 +9,11 @@ if (!isset($_SESSION["login"])) {
 $database = 'database.txt';
 
 // prüft ob file vorhanden wenn nicht wird erstellt.
-if (!file_exists($database))
+/*if (!file_exists($database))
 {
     fopen('database.txt', 'x');
 }
-
+*/
 $guestBookEntries = getEntriesFromDatabase($database);
 
 // das Array $arrayEntries hat nun soviele Elemente, wie die Datenbank Zeilen hat, d.h. pro Element eine Zeile = ein GB-Eintrag
@@ -27,7 +27,7 @@ $guestBookEntries = getEntriesFromDatabase($database);
 
 
 //  $errors = [];
-
+/*
 
  if($_SERVER['REQUEST_METHOD'] === 'POST')
   {
@@ -44,7 +44,7 @@ $guestBookEntries = getEntriesFromDatabase($database);
           $guestBookEntries = "Verfassen Sie den ersten Eintrag.";
        }
     }
-
+*/
 # Funktionen
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
