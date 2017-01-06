@@ -6,7 +6,7 @@
   </head>
   <body>
 
-    <form class="login" action="login.php" method="post">
+    <form class="login" action="index.php?action=login" method="post">
 
     Benutzername:<input type="text" name="user" value="Max">
     Passwort:<input type="password" name="password">

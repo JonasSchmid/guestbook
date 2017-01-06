@@ -1,6 +1,5 @@
 <?php
   //error_reporting(0);
-  include "login.html";
   include "shared/dbAccess.php";
 
   // Falls die `url` keine erlaubte ist,

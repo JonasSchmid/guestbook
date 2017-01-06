@@ -7,6 +7,8 @@
   </head>
   <body>
 
+    <?php include "login.php" ?>
+
     <header>
       <h1>Ultra Guestbook</h1>
     </header>
