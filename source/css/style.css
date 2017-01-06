@@ -47,3 +47,11 @@ button{
 a{
   font-size: 25px;
 }
+
+.login{
+  font-size: 20px;
+}
+
+.login input{
+  font-size: 18px;
+}

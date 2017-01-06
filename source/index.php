@@ -1,5 +1,5 @@
 <?php
-
+  include "login.html";
   include "shared/dbAccess.php";
 
   // Falls die `url` keine erlaubte ist,

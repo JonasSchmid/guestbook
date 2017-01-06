@@ -5,7 +5,6 @@ $database = 'database.txt';
       {
           fopen('database.txt', 'x');
       }
-      session_start();
 
 
 $guestBookEntries = getEntriesFromDatabase('./database.txt');

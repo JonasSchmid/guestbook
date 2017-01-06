@@ -9,8 +9,9 @@ $_logindaten = ARRAY("name"=>"admin", "passwort"=>"12345");
       if($_logindaten["name"] == $_POST["user"] &&
          $_logindaten["passwort"] == $_POST["password"])
          {
-           echo "du bist nun angemeldet";
+           echo "<p class='login'>du bist nun angemeldet</p>";
            $_SESSION["login"] = 1;
+           include "index.php";
          }
     }
 
