@@ -18,6 +18,7 @@ $_logindaten = ARRAY("name"=>"admin", "passwort"=>"12345");
     if ($_SESSION["login"] != 1)
     {
       echo "anmeldung fehlgeschlagen";
+      $_SESSION["login"] = 0;
 
       include("login.html");
       exit;

@@ -13,6 +13,7 @@
 
 
         <?php
+        session_start();
         if (isset($errors)){
 
             if (count($errors > 0)) {
