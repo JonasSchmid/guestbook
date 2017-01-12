@@ -7,14 +7,14 @@
   </head>
   <body>
 
-    <?php include "login.php" ?>
+    <?php include "login.php";?>
 
     <header>
       <h1>Ultra Guestbook</h1>
     </header>
 
-
         <?php
+
         session_start();
         if (isset($errors)){
 
@@ -28,10 +28,15 @@
         }
         ?>
 
+        <?php   if($_SESSION["login"] === 1){
+            echo "<ul>du bist angemeldet</ul>";
+          } ?>
+
     <form method="post" action="index.php?action=add">
 
+      <?php
 
-      <?php /*$database = 'database.txt';
+      /*$database = 'database.txt';
             if (!file_exists($database))
             {
                 fopen('database.txt', 'x');
@@ -62,7 +67,7 @@
         foreach ($guestBookEntries as $key => $value) {
             echo $value;
 
-            if($_SESSION["login"] === 1) {
+          /*  if($_SESSION["login"] === 1) {
     ?>
               <form action="index.php?action=delete" method="post" />
               <input type="submit" name="btn" value="delete" />
@@ -70,7 +75,7 @@
               </form>
 
     <?php
-            }
+  }*/
         }
       }
       ?>
